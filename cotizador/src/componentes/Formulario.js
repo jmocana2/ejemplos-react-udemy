@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 
 class Formulario extends Component {
+
+  //Creamos refs para eer los datos de un formulario
+  marcaRef = React.createRef();
+  yearRef = React.createRef();
+  planBasicoRef = React.createRef();
+  planCompletoRef = React.createRef();
+
+  handleCotizador = (e) => {
+      e.preventDefault();
+      console.log(this.marcaRef.current.value)
+  }
+
   render() {
     return (
-        <form className="cotizar-auto">
+        <form className="cotizar-auto" onSubmit={this.handleCotizador}>
             <div className="campo">
                 <label>Marca</label>
-                <select name="marca" >
+                <select name="marca" ref={this.marcaRef}>
                     <option value="americano">Americano</option>
                     <option value="europeo">Europeo</option>
                     <option value="asiatico">Asiatico</option>

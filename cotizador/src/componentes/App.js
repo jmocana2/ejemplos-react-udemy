@@ -8,7 +8,9 @@ class App extends Component {
     <div className="contenedor">  
       <div className="contenido">
         <Header />
-        <Formulario />
+        <div className="contenedor-formulario">
+          <Formulario />
+        </div>
       </div>
     </div>  
     );
