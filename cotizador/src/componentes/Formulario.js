@@ -10,8 +10,20 @@ class Formulario extends Component {
 
   handleCotizador = (e) => {
       e.preventDefault();
-      console.log(this.marcaRef.current.value)
-  }
+
+      //capturamos tipo de plan
+      const tipoPlan = this.planBasicoRef.current.checked ? "basico" : "completo";
+    
+      //Crear el objeto
+      const infoAuto = {
+          marca: this.marcaRef.current.value,
+          year: this.yearRef.current.value,
+          plan: tipoPlan
+      }
+
+      //Enviar el componente principal
+      this.props.cotizarSeguro(infoAuto);
+    }
 
   render() {
     return (
@@ -27,7 +39,7 @@ class Formulario extends Component {
 
             <div className="campo">
                 <label>Año</label>
-                <select name="year">
+                <select name="year" ref={this.yearRef}>
                     <option value="2018">2018</option>
                     <option value="2017">2017</option>
                     <option value="2016">2016</option>
@@ -43,8 +55,8 @@ class Formulario extends Component {
             </div>
             <div className="campo">
                 <label>Plan:</label>
-                <input type="radio" name="plan" value="basico"/> Básico
-                <input type="radio" name="plan" value="completo"/> Completo
+                <input type="radio" name="plan" value="basico" ref={this.planBasicoRef}/> Básico
+                <input type="radio" name="plan" value="completo" ref={this.planCompletoRef}/> Completo
             </div>
 
             <button type="submit" className="boton">Cotizar</button>
