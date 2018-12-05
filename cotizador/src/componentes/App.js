@@ -1,9 +1,14 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Header from './Header';
 import Formulario  from './Formulario';
 import { obtenerDiferenciaAnio, calcularMarca, obtenerPlan } from '../helper';
 
 class App extends Component {
+
+  state = {
+    resultado: '',
+    datos: {}
+  };  
 
   cotizarSeguro = (datos) => {
     const {marca, year, plan} = datos;
@@ -25,7 +30,10 @@ class App extends Component {
     const incrementoPlan = obtenerPlan(plan);
     resultado = parseFloat(resultado * incrementoPlan).toFixed(2);
 
-    console.log(resultado);
+    this.setState({
+      resultado: resultado,
+      datos: datos
+    })
   }
 
   render() {
