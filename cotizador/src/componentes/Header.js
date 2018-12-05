@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 const Header = props => {
   return (
@@ -6,10 +6,6 @@ const Header = props => {
         <h1>Cotizador de Seguro de auto</h1>
     </header>
   );
-};
-
-Header.propTypes = {
-  
 };
 
 export default Header;
