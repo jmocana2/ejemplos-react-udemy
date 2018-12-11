@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Formulario  from './Formulario';
+import Resumen from './Resumen';
 import { obtenerDiferenciaAnio, calcularMarca, obtenerPlan } from '../helper';
 
 class App extends Component {
@@ -33,7 +34,7 @@ class App extends Component {
     this.setState({
       resultado: resultado,
       datos: datos
-    })
+    });
   }
 
   render() {
@@ -43,6 +44,7 @@ class App extends Component {
         <Header />
         <div className="contenedor-formulario">
           <Formulario cotizarSeguro={this.cotizarSeguro} />
+          <Resumen resultado={this.state.resultado} datos={this.state.datos} />
         </div>
       </div>
     </div>  
