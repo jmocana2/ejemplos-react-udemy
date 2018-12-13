@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { primeraMayuscula } from '../helper'
+import Resultado from './Resultado';
 
 class Resumen extends Component {
   
   mostrarResumen = () =>{
-
-    console.log('entra');
 
     const {marca, year, plan} = this.props.datos
     
@@ -25,7 +24,7 @@ class Resumen extends Component {
   render() {
     return (
      <React.Fragment>
-       {this.mostrarResumen()}
+       {this.mostrarResumen()}       
      </React.Fragment>)
   }
 }
