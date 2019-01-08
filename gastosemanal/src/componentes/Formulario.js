@@ -7,8 +7,17 @@ class FormularioGasto extends Component {
 
   crearGasto = (e) => {
     e.preventDefault();
+
+    const gasto = {
+      nombreGasto: this.nombreGasto.current.value,
+      cantidadGasto: this.cantidadGasto.current.value
+    }
     
     console.log(`nombre: ${this.nombreGasto.current.value}, cantidad: ${this.cantidadGasto.current.value}` )
+
+    this.props.agregarGasto(gasto)
+
+    e.currentTarget.reset();
   }
   
   render() {

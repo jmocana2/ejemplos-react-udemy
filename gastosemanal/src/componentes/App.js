@@ -5,6 +5,20 @@ import FormularioGasto from './Formulario'
 import '../css/App.css';
 
 class App extends Component {
+
+  state = {
+    presupuesto: '',
+    restante: '',
+    gasto: {},
+  }  
+
+  agregarGasto = (gasto) => {
+    const gastos = {...this.state.gastos};
+
+    console.log("Nuevo gasto" + gasto)
+    console.log("Gastos: " + gastos)
+  }
+
   render() {
     return (
       <div className="App container">
@@ -12,7 +26,7 @@ class App extends Component {
         <div className="contenido-principal contenido">
           <div className="row">
             <div className="one-half column">
-              <FormularioGasto />
+              <FormularioGasto agregarGasto={this.agregarGasto} />
             </div>
             <div className="one-half column">
             
