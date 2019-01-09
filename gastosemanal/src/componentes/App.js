@@ -3,6 +3,7 @@ import Header from './Header';
 import FormularioGasto from './Formulario' 
 
 import '../css/App.css';
+import Listado from './Listado';
 
 class App extends Component {
 
@@ -32,7 +33,7 @@ class App extends Component {
               <FormularioGasto agregarGasto={this.agregarGasto} />
             </div>
             <div className="one-half column">
-            
+              <Listado gastos={this.state.gastos} />
             </div>
           </div>
         </div>
