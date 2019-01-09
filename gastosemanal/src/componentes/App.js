@@ -9,14 +9,17 @@ class App extends Component {
   state = {
     presupuesto: '',
     restante: '',
-    gasto: {},
+    gastos: {},
   }  
 
   agregarGasto = (gasto) => {
     const gastos = {...this.state.gastos};
 
-    console.log("Nuevo gasto" + gasto)
-    console.log("Gastos: " + gastos)
+    gastos[`gasto${Date.now()}`] = gasto
+
+    this.setState({
+      gastos
+    })
   }
 
   render() {
