@@ -7,6 +7,7 @@ import Listado from './Listado';
 
 /** helpers */
 import { validarPresupuesto, revisarPresupuesto } from '../helpers'
+import ControlPresupuesto from './ControlPresupuesto';
 
 class App extends Component {
 
@@ -54,6 +55,7 @@ class App extends Component {
             </div>
             <div className="one-half column">
               <Listado gastos={this.state.gastos} />
+              <ControlPresupuesto />
             </div>
           </div>
         </div>
