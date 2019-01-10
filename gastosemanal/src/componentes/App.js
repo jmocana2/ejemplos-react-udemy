@@ -5,6 +5,9 @@ import FormularioGasto from './Formulario'
 import '../css/App.css';
 import Listado from './Listado';
 
+/** helpers */
+import { validarPresupuesto, revisarPresupuesto } from '../helpers'
+
 class App extends Component {
 
   state = {
@@ -12,6 +15,23 @@ class App extends Component {
     restante: '',
     gastos: {},
   }  
+
+  componentDidMount = () => {
+    this.obtenerPresupuesto();
+  }
+
+  obtenerPresupuesto = () => {
+    let presupuesto = prompt('¿Cual es el presupuesto?');
+    let resultado = validarPresupuesto(presupuesto);
+    if(resultado){
+      this.setState({
+         presupuesto,
+         restante: presupuesto
+      })
+    }else{
+      this.obtenerPresupuesto();
+    }
+  }
 
   agregarGasto = (gasto) => {
     const gastos = {...this.state.gastos};
@@ -21,7 +41,7 @@ class App extends Component {
     this.setState({
       gastos
     })
-  }
+  }  
 
   render() {
     return (
