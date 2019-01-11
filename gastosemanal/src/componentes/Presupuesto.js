@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class Presupuesto extends Component {
   render() {
     return (
-      <div>
-        desde Presupuesto
+      <div className="alert alert-primary">
+        Presupuesto: $ {this.props.presupuesto}
       </div>
     );
   }
