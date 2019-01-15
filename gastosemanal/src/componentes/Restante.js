@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { revisarPresupuesto } from '../helpers';
 
 class Restante extends Component {
   render() {
+    const {presupuesto, restante} = this.props
     return (
-      <div className="alert alert-success">
-        Restante: $ {this.props.restante}
+      <div className={revisarPresupuesto(presupuesto, restante)}>
+        Restante: $ {restante}
       </div>
     );
   }
