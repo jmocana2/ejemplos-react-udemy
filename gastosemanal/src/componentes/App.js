@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import FormularioGasto from './Formulario' 
 
@@ -6,7 +7,7 @@ import '../css/App.css';
 import Listado from './Listado';
 
 /** helpers */
-import { validarPresupuesto, revisarPresupuesto } from '../helpers'
+import { validarPresupuesto } from '../helpers'
 import ControlPresupuesto from './ControlPresupuesto';
 
 class App extends Component {
@@ -75,6 +76,13 @@ class App extends Component {
       </div>
     );
   }
+}
+
+App.PropTypes = {
+  agregarGasto: PropTypes.func,
+  gastos: PropTypes.number,
+  presupuesto: PropTypes.number,
+  restante: PropTypes.number
 }
 
 export default App;
