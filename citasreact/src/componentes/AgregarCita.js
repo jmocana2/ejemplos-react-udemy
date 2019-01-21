@@ -4,6 +4,10 @@ import uuid from 'uuid';
 
 class AgregarCita extends Component {
 
+  state = {
+      error: false
+  }  
+
   nombreMascotaRef = React.createRef();
   nombreDuenoRef = React.createRef();
   fechaRef = React.createRef();
@@ -19,19 +23,36 @@ class AgregarCita extends Component {
           hora = this.horaRef.current.value,
           sintoma = this.sintomaRef.current.value;
 
-    const cita = {
-        id: uuid(),
-        nombreMascota,
-        nombreDueno,
-        fecha,
-        hora,
-        sintoma
+    if(nombreMascota === '' || nombreDueno === '' || fecha === '' || hora === '' || sintoma === '' ){
+        this.setState({
+            error: true
+        })
+    }
+    else{
+        const cita = {
+            id: uuid(),
+            nombreMascota,
+            nombreDueno,
+            fecha,
+            hora,
+            sintoma
+        }      
+    
+        this.props.crearCita(cita)
+
+        this.setState({
+            error: false
+        })
+
+        e.currentTarget.reset();
     }      
 
-    this.props.crearCita(cita)
+   
   }
 
   render() {
+    const isError = this.state.error; 
+
     return (
       <div>
         <div className="card mt-5">
@@ -75,6 +96,7 @@ class AgregarCita extends Component {
                   </div>
               </div>
           </form>
+          {isError && (<div className="alert alert-danger text-center">Todos los campos son obligatorios</div>)}
           </div>
         </div>
       </div>
