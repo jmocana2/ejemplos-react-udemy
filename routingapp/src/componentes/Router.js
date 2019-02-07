@@ -6,11 +6,14 @@ import productos from '../datos/datos';
 import Productos from './Productos';
 import Header from './Header';
 import SingleProducto from './SingleProducto';
+import Navegacion from './Navegación';
+import Contacto from './Contacto';
 
 class Router extends Component {
 
   state = {
-    productos: []
+    productos: [],
+    terminoBusqueda: ''
   }
 
   componentWillMount(){
@@ -19,17 +22,43 @@ class Router extends Component {
     })
   }
 
+  buscarProducto = (busqueda) => {
+    if(busqueda.length > 3){
+      this.setState({
+        terminoBusqueda: busqueda
+      })
+    }
+    else
+    {
+      this.setState({
+        terminoBusqueda: ''
+      })
+    }
+  }
+
   render() {
 
-    const {productos} = this.state;
+    let { productos } = this.state; 
+    const { terminoBusqueda} = this.state;
+
+    productos = productos.filter(producto => producto.nombre.toLowerCase().indexOf(terminoBusqueda.toLowerCase()) !== -1)
 
     return (
       <BrowserRouter>
         <React.Fragment>
           <Header />
+          <Navegacion />
           <Switch>
             <Route exact path="/" render={() => 
-              <Productos productos={productos} />
+              <Productos productos={productos}
+                buscarProducto={this.buscarProducto}
+              />
+            } />
+            <Route exact path="/productos" render={() => 
+              <Productos 
+              productos={productos}
+              buscarProducto={this.buscarProducto}
+               />
             } />
             <Route exact path="/producto/:productoId" render={(props) => {
               let idProducto = props.location.pathname.replace('/producto/', '');
@@ -38,6 +67,7 @@ class Router extends Component {
               )
             }} />
             <Route exact path="/nosotros" component={Nosotros} />
+            <Route exact path="/contacto" component={Contacto} />
             <Route component={Error404} />
           </Switch>
         </React.Fragment>
