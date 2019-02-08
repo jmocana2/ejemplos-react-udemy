@@ -19,6 +19,11 @@ export default function (state = initialState, action){
       return {
         ...state
       } 
+    case AGREGAR_CITAS:
+    return {
+      ...state,
+      citas: [...state.citas, action.payload]
+    }  
     default: 
       return state;  
   }

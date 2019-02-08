@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
+import { connect } from 'react-redux';
+import { agregarCita } from '../actions/citasActions';
 
 
 class AgregarCita extends Component {
@@ -38,7 +40,7 @@ class AgregarCita extends Component {
             sintoma
         }      
     
-        this.props.crearCita(cita)
+        this.props.agregarCita(cita)
 
         this.setState({
             error: false
@@ -104,4 +106,8 @@ class AgregarCita extends Component {
   }
 }
 
-export default AgregarCita;
+const mapStateToProps = (state) => ({
+    citas: state.citas.citas 
+})
+
+export default connect(mapStateToProps, { agregarCita })(AgregarCita);

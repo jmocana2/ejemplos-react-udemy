@@ -5,3 +5,10 @@ export const obtenerCitas = () => {
     type: MOSTRAR_CITAS
   }
 }
+
+export const agregarCita = (cita) => {
+  return {
+    type: AGREGAR_CITAS,
+    payload: cita
+  }
+}
