@@ -24,14 +24,6 @@ class App extends Component {
     )
   }
 
-  eliminarCita = (id) => {
-    const copiaCitas = [...this.state.citas]
-    const citas = copiaCitas.filter(cita => cita.id !== id);
-    this.setState({
-      citas
-    })
-  }
-
   render() { 
     return (
       <Provider store={store}>

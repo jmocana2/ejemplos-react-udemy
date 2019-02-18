@@ -12,3 +12,10 @@ export const agregarCita = (cita) => {
     payload: cita
   }
 }
+
+export const borrarCita = (id) => {
+  return {
+    type: BORRAR_CITAS,
+    payload: id
+  }
+}

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { borrarCita } from '../actions/citasActions'
 
 class Cita extends Component {
 
   eliminarCita = () => {
-     this.props.eliminarCita(this.props.info.id)
+     this.props.borrarCita(this.props.info.id);
   }
 
   render() {
@@ -35,4 +37,4 @@ class Cita extends Component {
   }
 }
 
-export default Cita;
+export default connect(null, {borrarCita})(Cita);
