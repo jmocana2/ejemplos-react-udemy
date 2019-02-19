@@ -1,6 +1,8 @@
 import {combineReducers} from 'redux';
-import citasReducer from './citasReducer'
+import citasReducer from './citasReducer';
+import erroresReducer from './erroresReducer';
 
 export default combineReducers({
-  citas: citasReducer
+  citas: citasReducer,
+  error: erroresReducer
 });

@@ -3,6 +3,11 @@ import Cita from './Cita';
 
 import {connect} from 'react-redux';
 import {obtenerCitas} from '../actions/citasActions';
+import store from '../store';
+
+store.subscribe(() => {
+  localStorage.setItem('citas', JSON.stringify(store.getState()));
+})
 
 class ListaCitas extends Component { 
   
@@ -21,7 +26,7 @@ class ListaCitas extends Component {
           <h2 className="card-title text-center">{mensaje}</h2>
           <div className="lista-citas">
             {Object.keys(citas).map(cita =>(
-              <Cita key={cita} info={citas[cita]} eliminarCita={this.props.eliminarCita} />
+              <Cita key={cita} info={citas[cita]} />
             ))}            
           </div>
         </div>

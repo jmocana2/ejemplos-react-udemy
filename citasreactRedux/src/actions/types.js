@@ -1,3 +1,5 @@
 export const MOSTRAR_CITAS = 'MOSTRAR_CITAS';
 export const AGREGAR_CITAS = 'AGREGAR_CITAS';
 export const BORRAR_CITAS = 'BORRAR_CITAS';
+export const VALIDAR_ERRORES = 'VALIDAR_ERRORES';
+export const MOSTRAR_ERROR = 'MOSTRAR_ERROR';

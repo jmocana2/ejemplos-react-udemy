@@ -7,23 +7,6 @@ import store from './store'
 
 
 class App extends Component {
-
-  componentDidMount(){
-    const citasLS = localStorage.getItem('citas');
-    if(citasLS){
-      this.setState({
-        citas: JSON.parse(citasLS)
-      })
-    }
-  }
-
-  componentDidUpdate(){
-    localStorage.setItem(
-      'citas',
-      JSON.stringify(this.state.citas)
-    )
-  }
-
   render() { 
     return (
       <Provider store={store}>
@@ -34,7 +17,7 @@ class App extends Component {
               <AgregarCita />
             </div>
             <div className="col-md-6">
-              <ListaCitas eliminarCita={this.eliminarCita} />
+              <ListaCitas />
             </div>
           </div>        
         </div>
