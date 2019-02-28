@@ -5,6 +5,7 @@ import axios from 'axios';
 import Header from './Header';
 import Navegacion from './Navegacion';
 import Posts from './Posts';
+import SinglePost from './SinglePost';
 
 class Router extends Component {
 
@@ -42,6 +43,12 @@ class Router extends Component {
                   )
                   }} 
                 />
+                <Route exact path='/post/:postId' render={(props) => {
+                  
+                  let idPost = props.location.pathname.replace('/post/', '');
+                  return(<SinglePost />)
+                  
+                }} />
               </Switch>
             </div>
           </div>

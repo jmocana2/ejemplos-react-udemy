@@ -17,7 +17,7 @@ class Listado extends Component {
         </thead>
         <tbody>
           {posts.map(post => (
-            <Post info={posts[post]} />
+            <Post info={post} />
           ))}
         </tbody>
       </table>
