@@ -17,7 +17,7 @@ class Listado extends Component {
         </thead>
         <tbody>
           {posts.map(post => (
-            <Post info={post} />
+            <Post key={post.id} info={post} borrarPost={this.props.borrarPost} />
           ))}
         </tbody>
       </table>

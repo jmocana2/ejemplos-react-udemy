@@ -9,7 +9,7 @@ class Posts extends Component {
     return (
       <div className="col-12 col-md-8">
         <h2 className="text-cener">Posts</h2>
-        <Listado posts={posts} />
+        <Listado posts={posts} borrarPost={this.props.borrarPost} />
       </div>
     );
   }

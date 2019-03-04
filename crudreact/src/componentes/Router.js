@@ -26,6 +26,22 @@ class Router extends Component {
     })
   } 
 
+  borrarPost = (id) => {
+    console.log(id);
+    axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    .then((response) => {
+      if(response.status === 200){
+        const posts = this.state.posts;
+        const resultado = posts.filter(post => (
+          post.id !== id
+        ))
+        this.setState({
+          posts: resultado
+        })        
+      }
+    })
+  }
+
   render() {
 
     const { posts } = this.state;
@@ -39,7 +55,7 @@ class Router extends Component {
               <Switch>
                 <Route exact path='/' render={() => {
                   return(
-                    <Posts posts={posts} />
+                    <Posts posts={posts} borrarPost={this.borrarPost} />
                   )
                   }} 
                 />
@@ -49,7 +65,7 @@ class Router extends Component {
                   console.log(idPost)                 
 
                   const filtro = posts.filter(post => (
-                    post.id == idPost                   
+                    post.id === Number(idPost)                   
                   ));
                   
                   return(<SinglePost post={filtro[0]} />)
