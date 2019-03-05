@@ -6,6 +6,7 @@ import Header from './Header';
 import Navegacion from './Navegacion';
 import Posts from './Posts';
 import SinglePost from './SinglePost';
+import Formulario from './Formulario';
 
 class Router extends Component {
 
@@ -27,7 +28,7 @@ class Router extends Component {
   } 
 
   borrarPost = (id) => {
-    console.log(id);
+ 
     axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
     .then((response) => {
       if(response.status === 200){
@@ -40,6 +41,24 @@ class Router extends Component {
         })        
       }
     })
+  }
+
+  crearPost = (post) =>{
+    
+    axios.post('https://jsonplaceholder.typicode.com/posts/', post)
+      .then((response) => {
+        if(response.status === 201){
+
+          const nuevoPost = Object.assign({}, {title: response.data.title}, {body: response.data.body}, {id: response.data.id})  
+
+          console.log(response)
+
+          this.setState(prevState => ({
+            posts: [...prevState.posts, nuevoPost]
+          }))
+        }
+      })
+
   }
 
   render() {
@@ -71,6 +90,9 @@ class Router extends Component {
                   return(<SinglePost post={filtro[0]} />)
                   
                 }} />
+                <Route exact path='/crear/' render={() => (
+                  <Formulario crearPost={this.crearPost} />
+                )} />
               </Switch>
             </div>
           </div>
