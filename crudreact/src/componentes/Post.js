@@ -10,7 +10,8 @@ class Post extends Component {
       <tr>
         <td>{id}</td>
         <td>{title}</td>
-        <td><Link to={`/post/${id}`} className="btn btn-primary" style={{marginBottom: '5px'}}>Ver</Link>
+        <td><Link to={`/post/${id}`} className="btn btn-primary" style={{marginBottom: '5px'}}>Ver</Link></td>
+        <td><Link to={`/editar/${id}`} className="btn btn-warning" style={{marginBottom: '5px'}}>Editar</Link>
         <button type="button" className="btn btn-danger" onClick={() => this.props.borrarPost(id)}>Borrar</button></td>
       </tr>
     );

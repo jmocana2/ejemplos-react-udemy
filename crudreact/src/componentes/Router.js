@@ -7,6 +7,7 @@ import Navegacion from './Navegacion';
 import Posts from './Posts';
 import SinglePost from './SinglePost';
 import Formulario from './Formulario';
+import Editar from './Editar';
 
 class Router extends Component {
 
@@ -61,6 +62,19 @@ class Router extends Component {
 
   }
 
+  editarPost = (post) =>{
+
+    const {id} = post
+    
+    axios.put(`https://jsonplaceholder.typicode.com/posts/${id}`, post)
+      .then((response) => {
+        if(response.status === 200){
+          console.log('se editó correctamente');
+        }
+      })
+
+  }
+
   render() {
 
     const { posts } = this.state;
@@ -81,13 +95,23 @@ class Router extends Component {
                 <Route exact path='/post/:postId' render={(props) => {
                   
                   let idPost = props.location.pathname.replace('/post/', '');
-                  console.log(idPost)                 
 
                   const filtro = posts.filter(post => (
                     post.id === Number(idPost)                   
                   ));
                   
                   return(<SinglePost post={filtro[0]} />)
+                  
+                }} />
+                 <Route exact path='/editar/:postId' render={(props) => {
+                  
+                  let idPost = props.location.pathname.replace('/editar/', '');                 
+
+                  const filtro = posts.filter(post => (
+                    post.id === Number(idPost)                   
+                  ));
+                  
+                  return(<Editar post={filtro[0]} editarPost={this.editarPost} />)
                   
                 }} />
                 <Route exact path='/crear/' render={() => (
