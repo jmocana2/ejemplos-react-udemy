@@ -1,11 +1,11 @@
 import { MOSTRAR_PRODUCTOS } from './types'
 
-import { axios } from 'axios';
+import axios from 'axios';
 
-const mostrarRespuesta = () => async dispatch => {
+export const mostrarProductos = () => async dispatch => {
   const respuesta = await axios.get('http://localhost:5000/productos');
   dispatch({
-    action: MOSTRAR_PRODUCTOS,
+    type: MOSTRAR_PRODUCTOS,
     payload: respuesta.data
   })
 }
