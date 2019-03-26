@@ -21,7 +21,7 @@ class Productos extends Component {
             <ul>
               {
                 productos.map(producto => (
-                  <Producto key={producto.id} nombre={producto.nombre} precio={producto.precio} />
+                  <Producto key={producto.id} nombre={producto.nombre} precio={producto.precio} id={producto.id} />
                 ))
               }
             </ul>
