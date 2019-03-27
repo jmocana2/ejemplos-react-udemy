@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
+import { agregarProducto } from '../actions/actionsProductos';
 
 class NuevoProducto extends Component {
 
@@ -33,6 +36,14 @@ class NuevoProducto extends Component {
     this.setState({
       error: false
     })
+
+    const producto = {
+      nombre: titulo,
+      precio
+    }
+
+    this.props.agregarProducto(producto); 
+
   }
 
   render() {
@@ -68,4 +79,4 @@ class NuevoProducto extends Component {
   }
 }
 
-export default NuevoProducto;
+export default connect(null, { agregarProducto })(NuevoProducto);

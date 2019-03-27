@@ -1,4 +1,4 @@
-import { MOSTRAR_PRODUCTOS, ELIMINAR_PRODUCTO } from './types'
+import { MOSTRAR_PRODUCTOS, ELIMINAR_PRODUCTO, NUEVO_PRODUCTO } from './types'
 
 import axios from 'axios';
 
@@ -16,4 +16,12 @@ export const borrarProducto = (id)  => async dispatch => {
     type: ELIMINAR_PRODUCTO,
     payload: id 
   })  
+}
+
+export const agregarProducto = (post) => async dispatch => {
+  const respuesta = await axios.post(`http://localhost:5000/productos/`, post);
+  dispatch({
+    type: NUEVO_PRODUCTO,
+    payload: respuesta.data 
+  }) 
 }
