@@ -1,14 +1,9 @@
 {
   "productos": [
     {
-      "id": 0,
-      "nombre": "Pastel de Vainilla ",
-      "precio": "100"
-    },
-    {
-      "id": 3,
-      "nombre": "Pastel 4",
-      "precio": 30
+      "nombre": "Pastel de platano",
+      "precio": "50",
+      "id": 0
     },
     {
       "nombre": "Pastel de Zanahoria",
@@ -21,14 +16,19 @@
       "id": 5
     },
     {
-      "nombre": "Pastel de Fresa",
-      "precio": "40",
+      "nombre": "Pastel de Fresa y chocolate",
+      "precio": "130",
       "id": 6
     },
     {
       "nombre": "pizza hawaiana",
       "precio": "30",
       "id": 7
+    },
+    {
+      "nombre": "Pastel de trufa",
+      "precio": "110",
+      "id": 8
     }
   ]
 }

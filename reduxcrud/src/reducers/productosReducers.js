@@ -1,4 +1,4 @@
-import { MOSTRAR_PRODUCTOS, MOSTRAR_PRODUCTO, ELIMINAR_PRODUCTO, NUEVO_PRODUCTO } from '../actions/types';
+import { MOSTRAR_PRODUCTOS, MOSTRAR_PRODUCTO, ELIMINAR_PRODUCTO, NUEVO_PRODUCTO, EDITAR_PRODUCTO } from '../actions/types';
 
 const initialState = {
   productos: []
@@ -25,6 +25,11 @@ export default function(state = initialState, action){
       return {
         ...state,
         productos: [...state.productos, action.payload]
+      }
+      case EDITAR_PRODUCTO:
+      return {
+        ...state,
+        productos: state.productos.map(producto => producto.id === action.payload.id ? producto = action.payload : producto)
       }
      default:
       return state 

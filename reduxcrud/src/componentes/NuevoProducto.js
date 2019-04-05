@@ -43,6 +43,7 @@ class NuevoProducto extends Component {
     }
 
     this.props.agregarProducto(producto); 
+    this.props.history.push('/');
 
   }
 

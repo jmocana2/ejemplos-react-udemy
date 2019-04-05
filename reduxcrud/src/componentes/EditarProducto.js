@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import { mostrarProducto } from '../actions/actionsProductos';
+import { mostrarProducto, editarProducto } from '../actions/actionsProductos';
 
 class EditarProducto extends Component {
 
   state = {
     titulo: '',
-    precio: 0,
+    precio: '',
     error: false
   }
 
@@ -35,7 +35,7 @@ class EditarProducto extends Component {
     })
   }
 
-  agregarProducto = (e) => {
+  editarProducto = (e) => {
     e.preventDefault();
     const {titulo, precio} = this.state;
 
@@ -49,12 +49,17 @@ class EditarProducto extends Component {
       error: false
     })
 
+    const { id } = this.props.match.params;
+
     const producto = {
       nombre: titulo,
-      precio: String(precio)
+      precio: String(precio),
+      id
     }
 
-    this.props.agregarProducto(producto); 
+    this.props.editarProducto(producto); 
+    this.props.history.push('/');
+
 
   }
 
@@ -68,7 +73,7 @@ class EditarProducto extends Component {
           <div className="card">
               <div className="card-body">
                   <h2 className="text-center">Agregar Nuevo Producto</h2>
-                  <form onSubmit={this.agregarProducto}>
+                  <form onSubmit={this.editarProducto}>
                       <div className="form-group">
                           <label>Titulo</label>
                           <input defaultValue={titulo} onChange={this.nuevoTitulo} type="text" className="form-control" placeholder="Titulo" />
@@ -95,4 +100,4 @@ const mapStateToProps = state => ({
   producto: state.productos.producto
 })
 
-export default connect(mapStateToProps, { mostrarProducto })(EditarProducto);
+export default connect(mapStateToProps, { mostrarProducto, editarProducto })(EditarProducto);
